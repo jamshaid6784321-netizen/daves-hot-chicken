@@ -1991,6 +1991,10 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
 
 /* ============ item details popup ============ */
 (function(){
+  /* The modal markup sits after this script in the body, so wait for the
+     DOM to finish parsing before looking it up (first live check caught
+     the early return this caused: no handlers were attached at all). */
+  function init(){
   var modal = document.getElementById("dhcModal");
   if (!modal) return;
   var byName = {};
@@ -2064,6 +2068,9 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
   });
   modal.addEventListener("click", function(e){ if (e.target.closest("[data-close]")) close(); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
 
 /* ============ calculator ============ */
