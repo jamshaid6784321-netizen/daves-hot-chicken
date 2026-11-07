@@ -329,6 +329,28 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
 [data-panel]:not([hidden]){animation:dhcSwipe .45s ease both}
 @keyframes dhcSwipe{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){[data-panel]:not([hidden]){animation:none}}
+
+/* item details popup */
+.pcard{cursor:pointer;position:relative}
+.pcard::after{content:"+";position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:#d92323;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3);z-index:2}
+.dhc-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
+.dhc-modal[hidden]{display:none}
+.dhc-modal-backdrop{position:absolute;inset:0;background:rgba(12,10,10,.74)}
+.dhc-modal-card{position:relative;background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.45);animation:dhcPop .25s ease both}
+@keyframes dhcPop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.dhc-modal-card{animation:none}}
+.dhc-modal-card figure{margin:0}
+.dhc-modal-card figure img{width:100%;height:auto;display:block}
+.dhc-modal-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(0,0,0,.68);color:#fff;font-size:20px;cursor:pointer;line-height:1;z-index:3}
+.dhc-modal-body{padding:18px 20px 22px}
+.dhc-modal-body h3{margin:0 0 6px}
+.dhc-modal-desc{margin:0 0 12px;color:#555}
+.dhc-modal-nutri{width:100%;border-collapse:collapse;margin:16px 0 6px}
+.dhc-modal-nutri td{padding:7px 4px;border-bottom:1px solid #eee}
+.dhc-modal-nutri td:first-child{color:#666}
+.dhc-modal-nutri td:last-child{text-align:right;font-weight:600}
+.dhc-modal-cta{display:block;text-align:center;background:#d92323;color:#fff;font-weight:700;padding:13px 16px;border-radius:10px;text-decoration:none;margin-top:14px}
+.dhc-modal-note{font-size:12.5px;color:#888;margin:10px 0 0;text-align:center}
 </style>
 <script type="application/ld+json">
 {
@@ -1927,7 +1949,7 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
   function stop(){ if (timer) { clearTimeout(timer); timer = null; } }
   function tick(){
     timer = null;
-    if (!inView || userHold || document.hidden) { schedule(); return; }
+    if (!inView || userHold || document.hidden || window.__dhcHoldAutoplay) { schedule(); return; }
     var next = tabBtns[(currentIdx() + 1) % tabBtns.length];
     showTab(next.getAttribute("data-tab"), false);
     schedule();
@@ -1956,6 +1978,83 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
     tabBar.addEventListener("pointerdown", poke);
   }
   panels.forEach(function(p){ p.addEventListener("pointerdown", poke); });
+})();
+
+/* ============ item details popup ============ */
+(function(){
+  var modal = document.getElementById("dhcModal");
+  if (!modal) return;
+  var byName = {};
+  function norm(x){ return (x || "").toLowerCase().replace(/dave's|daves/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+  try {
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(sc){
+      var data = JSON.parse(sc.textContent);
+      var graph = data["@graph"] || [data];
+      graph.forEach(function(node){
+        if (node["@type"] !== "Menu") return;
+        (node.hasMenuSection || []).forEach(function(sec){
+          (sec.hasMenuItem || []).forEach(function(it){ byName[norm(it.name)] = it; });
+        });
+      });
+    });
+  } catch (e) {}
+  var img = document.getElementById("dhcModalImg"),
+      nameEl = document.getElementById("dhcModalName"),
+      descEl = document.getElementById("dhcModalDesc"),
+      priceEl = document.getElementById("dhcModalPrice"),
+      calEl = document.getElementById("dhcModalCal"),
+      nutriEl = document.getElementById("dhcModalNutri"),
+      lastFocus = null;
+  function rowsFor(it){
+    if (!it || !it.nutrition) return "";
+    var n = it.nutrition, rows = "";
+    function row(label, val){ if (val) rows += "<tr><td>" + label + "</td><td>" + val + "</td></tr>"; }
+    row("Calories", n.calories);
+    row("Protein", n.proteinContent);
+    row("Fat", n.fatContent);
+    row("Carbs", n.carbohydrateContent);
+    row("Sodium", n.sodiumContent);
+    row("Fiber", n.fiberContent);
+    row("Sugar", n.sugarContent);
+    return rows;
+  }
+  function open(card){
+    var h3 = card.querySelector("h3");
+    var cimg = card.querySelector("img");
+    var price = card.querySelector(".price");
+    var chip = card.querySelector(".chip");
+    nameEl.textContent = h3 ? h3.textContent : "Menu item";
+    if (cimg) { img.src = cimg.currentSrc || cimg.src; img.alt = cimg.alt || ""; descEl.textContent = cimg.alt || ""; }
+    descEl.style.display = descEl.textContent ? "" : "none";
+    priceEl.textContent = price ? price.textContent : "";
+    calEl.textContent = chip ? chip.textContent : "";
+    var rows = rowsFor(byName[norm(nameEl.textContent)]);
+    nutriEl.innerHTML = rows;
+    nutriEl.style.display = rows ? "" : "none";
+    lastFocus = document.activeElement;
+    window.__dhcHoldAutoplay = true;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    var x = modal.querySelector(".dhc-modal-x");
+    if (x) x.focus();
+  }
+  function close(){
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    window.__dhcHoldAutoplay = false;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll(".pcard").forEach(function(card){
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.addEventListener("click", function(){ open(card); });
+    card.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(card); }
+    });
+  });
+  modal.addEventListener("click", function(e){ if (e.target.closest("[data-close]")) close(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
 })();
 
 /* ============ calculator ============ */
@@ -2031,5 +2130,22 @@ document.getElementById("qMinus").addEventListener("click", function(){ if (qty 
 document.getElementById("qPlus").addEventListener("click", function(){ if (qty < 6) qty++; recalc(); });
 recalc();
 </script>
+
+<!-- item details popup -->
+<div class="dhc-modal" id="dhcModal" hidden role="dialog" aria-modal="true" aria-labelledby="dhcModalName">
+  <div class="dhc-modal-backdrop" data-close></div>
+  <div class="dhc-modal-card">
+    <button class="dhc-modal-x" type="button" data-close aria-label="Close details">&times;</button>
+    <figure><img id="dhcModalImg" src="" alt=""></figure>
+    <div class="dhc-modal-body">
+      <h3 id="dhcModalName"></h3>
+      <p class="dhc-modal-desc" id="dhcModalDesc"></p>
+      <div class="meta"><span class="price" id="dhcModalPrice"></span><span class="chip" id="dhcModalCal"></span></div>
+      <table class="dhc-modal-nutri" id="dhcModalNutri"></table>
+      <a class="dhc-modal-cta" href="/daves-hot-chicken/daves-hot-chicken-locations/">Find a Store to Order</a>
+      <p class="dhc-modal-note">Prices and calories are checked guide ranges. Your store's exact price is in its listing.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
