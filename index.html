@@ -324,6 +324,11 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
 .pick:hover{border-color:var(--red)}
 
 .faqitem h3.q{font-size:1rem;text-transform:none;margin:0}
+
+/* auto-swipe: panel entrance when a category changes */
+[data-panel]:not([hidden]){animation:dhcSwipe .45s ease both}
+@keyframes dhcSwipe{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){[data-panel]:not([hidden]){animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -1314,11 +1319,11 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
       <a href="/daves-hot-chicken/daves-hot-chicken-hours/">Hours</a>
       <a href="/daves-hot-chicken/daves-hot-chicken-rewards/">Rewards</a>
       <a href="/daves-hot-chicken/#calculator">Calorie Calculator</a>
-      <a href="/daves-hot-chicken/#faq">FAQ</a>
+      <a href="/daves-hot-chicken/daves-hot-chicken-locations/">Locations</a>
     </nav>
   </div>
   <nav class="mobilenav" aria-label="Mobile">
-    <a href="/daves-hot-chicken/">Home</a><a href="/daves-hot-chicken/#categories">Categories</a><a href="/daves-hot-chicken/daves-hot-chicken-combos/">Combos</a><a href="/daves-hot-chicken/daves-hot-chicken-spice-levels/">Spice</a><a href="/daves-hot-chicken/daves-hot-chicken-hours/">Hours</a><a href="/daves-hot-chicken/daves-hot-chicken-rewards/">Rewards</a><a href="/daves-hot-chicken/#calculator">Calculator</a><a href="/daves-hot-chicken/#faq">FAQ</a>
+    <a href="/daves-hot-chicken/">Home</a><a href="/daves-hot-chicken/#categories">Categories</a><a href="/daves-hot-chicken/daves-hot-chicken-combos/">Combos</a><a href="/daves-hot-chicken/daves-hot-chicken-spice-levels/">Spice</a><a href="/daves-hot-chicken/daves-hot-chicken-hours/">Hours</a><a href="/daves-hot-chicken/daves-hot-chicken-rewards/">Rewards</a><a href="/daves-hot-chicken/#calculator">Calculator</a><a href="/daves-hot-chicken/daves-hot-chicken-locations/">Locations</a>
   </nav>
 </header>
 
@@ -1907,6 +1912,52 @@ tabBtns.forEach(function(b, idx){
 document.querySelectorAll("[data-tab-link]").forEach(function(a){
   a.addEventListener("click", function(){ showTab(a.getAttribute("data-tab-link"), true); });
 });
+
+/* ============ tabs autoplay: categories auto-swipe every 2.5 seconds ============ */
+(function(){
+  if (reduceMotion || !tabBtns.length) return;
+  var DELAY = 2500, timer = null, resumeT = null, inView = false, userHold = false;
+  var tabBar = document.querySelector(".tabbar");
+  function currentIdx(){
+    var idx = 0;
+    tabBtns.forEach(function(b, i){ if (b.getAttribute("aria-selected") === "true") idx = i; });
+    return idx;
+  }
+  function schedule(){ if (!timer && !userHold) timer = setTimeout(tick, DELAY); }
+  function stop(){ if (timer) { clearTimeout(timer); timer = null; } }
+  function tick(){
+    timer = null;
+    if (!inView || userHold || document.hidden) { schedule(); return; }
+    var panel = document.querySelector("[data-panel]:not([hidden])");
+    /* visitor has scrolled deep into a panel to read it: do not yank the category away */
+    if (panel && panel.getBoundingClientRect().top < -80) { schedule(); return; }
+    var next = tabBtns[(currentIdx() + 1) % tabBtns.length];
+    showTab(next.getAttribute("data-tab"), false);
+    schedule();
+  }
+  if ("IntersectionObserver" in window && tabBar) {
+    new IntersectionObserver(function(en){
+      inView = en[0].isIntersecting;
+      if (inView) schedule(); else stop();
+    }, { threshold: 0.15 }).observe(tabBar);
+  } else { inView = true; schedule(); }
+  /* any manual interaction restarts the countdown, with a 4s grace period */
+  function poke(){
+    stop();
+    if (resumeT) clearTimeout(resumeT);
+    resumeT = setTimeout(function(){ resumeT = null; schedule(); }, 4000);
+  }
+  tabBtns.forEach(function(b){ b.addEventListener("click", poke); });
+  document.querySelectorAll("[data-tab-link]").forEach(function(a){ a.addEventListener("click", poke); });
+  /* hovering or holding the menu area pauses the rotation */
+  var zones = [tabBar].concat(Array.prototype.slice.call(panels));
+  zones.forEach(function(el){
+    if (!el) return;
+    el.addEventListener("pointerenter", function(){ userHold = true; stop(); });
+    el.addEventListener("pointerleave", function(){ userHold = false; schedule(); });
+    el.addEventListener("pointerdown", poke);
+  });
+})();
 
 /* ============ calculator ============ */
 var SPICE = ["No Spice","Lite Mild","Mild","Medium","Hot","Extra Hot","Reaper"];
