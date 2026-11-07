@@ -268,6 +268,249 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
     </div>
   </section>
 
+  <section class="panel">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Browse Stores by <em>City</em></h2>
+          <p>Every city with a Dave's Hot Chicken store, in alphabetical order. Tap a city to jump straight to its stores on the map.</p>
+        </div>
+      </div>
+      <style>.citygrid{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.citychip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:2px solid var(--line);border-radius:999px;background:var(--card);font-weight:700;font-size:.92rem;color:inherit;text-decoration:none;transition:border-color .15s ease,color .15s ease}.citychip:hover{border-color:var(--red);color:var(--red)}.citychip span{background:#f7e9d2;color:#7a2b12;border-radius:99px;padding:1px 8px;font-size:.78rem;font-weight:900}</style>
+      <div class="citygrid">
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Albany">Albany <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Algonquin">Algonquin <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Altamonte%20Springs">Altamonte Springs <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Amsterdam">Amsterdam <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Anaheim">Anaheim <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Apple%20Valley">Apple Valley <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Arlington">Arlington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Artesia">Artesia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Ashwaubenon">Ashwaubenon <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Aventura">Aventura <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Batavia">Batavia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Beaverton">Beaverton <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Billings">Billings <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Bloomington">Bloomington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Boston">Boston <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Braintree">Braintree <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Brentwood">Brentwood <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Brooklyn">Brooklyn <span>4</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Burbank">Burbank <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Burlington">Burlington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Canton">Canton <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Cardiff">Cardiff <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Cathedral%20City">Cathedral City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Champaign">Champaign <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Charlotte">Charlotte <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Chelmsford">Chelmsford <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Cherry%20Hill">Cherry Hill <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Chesapeake">Chesapeake <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Chicago">Chicago <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Chino%20Hills">Chino Hills <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Cicero">Cicero <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Clackamas">Clackamas <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=College%20Station">College Station <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Colorado%20Springs">Colorado Springs <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Columbia">Columbia, MD <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Columbia">Columbia, SC <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Columbus">Columbus <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Conyers">Conyers <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Coon%20Rapids">Coon Rapids <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Costa%20Mesa">Costa Mesa <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Culver%20City">Culver City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Dallas">Dallas <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Davenport">Davenport <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Dearborn">Dearborn <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Denton">Denton <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Denver">Denver <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Doha">Doha <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Dubai">Dubai <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Dublin">Dublin <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=East%20Brunswick">East Brunswick <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=East%20Lansing">East Lansing <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Edinburg">Edinburg <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Edmond">Edmond <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=El%20Cajon">El Cajon <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=El%20Cerrito">El Cerrito <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=El%20Paso">El Paso <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Escondido">Escondido <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Eugene">Eugene <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fair%20Oaks">Fair Oaks <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fairfax">Fairfax <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fargo">Fargo <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Folsom">Folsom <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fontana">Fontana <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fort%20Collins">Fort Collins <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fort%20Worth">Fort Worth <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fountain%20Valley">Fountain Valley <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Framingham">Framingham <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Franconia">Franconia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Franklin">Franklin <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fresh%20Meadows">Fresh Meadows <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Fullerton">Fullerton <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Gainesville">Gainesville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Gilbert">Gilbert <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Glen%20Burnie">Glen Burnie <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Glendale">Glendale <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Greenville">Greenville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Hemet">Hemet <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Highlands%20Ranch">Highlands Ranch <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Holly%20Springs">Holly Springs <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Houston">Houston <span>4</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Howell">Howell <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Hurst">Hurst <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Indianapolis">Indianapolis <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Indio">Indio <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Irvine">Irvine <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Irving">Irving <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Jeddah">Jeddah <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Jeffersonville">Jeffersonville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Kansas%20City">Kansas City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Kearny">Kearny <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Kenosha">Kenosha <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lake%20Mary">Lake Mary <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lakewood">Lakewood, CA <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lakewood">Lakewood, OH <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lancaster">Lancaster <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Langhorne">Langhorne <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Las%20Vegas">Las Vegas <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Laveen">Laveen <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lewisville">Lewisville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lexington">Lexington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Long%20Beach">Long Beach <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Los%20Angeles">Los Angeles <span>5</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Lubbock">Lubbock <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Madison">Madison <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Manchester">Manchester <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Marana">Marana <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=McAllen">McAllen <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=McKinney">McKinney <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Mechanicsburg">Mechanicsburg <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Medford">Medford <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Melrose%20Park">Melrose Park <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Menifee">Menifee <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Menomonee%20Falls">Menomonee Falls <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Meridian">Meridian <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Mesquite">Mesquite <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Middletown">Middletown <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Midvale">Midvale <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Milwaukee">Milwaukee <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Minnetonka">Minnetonka <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Mission%20Viejo">Mission Viejo <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Missouri%20City">Missouri City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Monrovia">Monrovia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Nampa">Nampa <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Naperville">Naperville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=New%20Caney">New Caney <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=New%20York">New York <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Newton">Newton <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=North%20Hollywood">North Hollywood <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Northridge">Northridge <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Novato">Novato <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Oak%20Park%20Heights">Oak Park Heights <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Oakland">Oakland <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Ocean%20Township">Ocean Township <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Oceanside">Oceanside <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Oklahoma%20City">Oklahoma City <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Omaha">Omaha <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Ontario">Ontario <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Orem">Orem <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Orland%20Park">Orland Park <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Orlando">Orlando <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Overland%20Park">Overland Park <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Owings%20Mills">Owings Mills <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Oxnard">Oxnard <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Palm%20Desert">Palm Desert <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Pembroke%20Pines">Pembroke Pines <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Philadelphia">Philadelphia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Phoenix">Phoenix <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Plano">Plano <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Pleasant%20Hill">Pleasant Hill <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Port%20Hueneme">Port Hueneme <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Portland">Portland <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Portsmouth">Portsmouth <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Queensbury">Queensbury <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Redding">Redding <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Richardson">Richardson <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Richmond">Richmond <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Riyadh">Riyadh <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Rochester">Rochester <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Rock%20Hill">Rock Hill <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Rogers">Rogers <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Rosemead">Rosemead <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Rowland%20Heights">Rowland Heights <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Sacramento">Sacramento <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Salem">Salem <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Salt%20Lake%20City">Salt Lake City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Antonio">San Antonio <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Bernardino">San Bernardino <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Diego">San Diego <span>3</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Jose">San Jose <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Leandro">San Leandro <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=San%20Luis%20Obispo">San Luis Obispo <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Santa%20Ana">Santa Ana <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Santa%20Clara">Santa Clara <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Santa%20Maria">Santa Maria <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Santa%20Rosa">Santa Rosa <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Saugus">Saugus <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Schererville">Schererville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Scottsdale">Scottsdale <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Seal%20Beach">Seal Beach <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Seattle">Seattle <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Secaucus">Secaucus <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Shelby%20Township">Shelby Township <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Sherman%20Oaks">Sherman Oaks <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Sicklerville">Sicklerville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Silver%20Spring">Silver Spring <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=South%20Bend">South Bend <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=South%20Burlington">South Burlington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Southfield">Southfield <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Spring">Spring <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=St.%20Paul">St. Paul <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Sumter">Sumter <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Sunnyvale">Sunnyvale <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Tampa">Tampa <span>2</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Temecula">Temecula <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Toledo">Toledo <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Tonawanda">Tonawanda <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Toronto">Toronto <span>5</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Torrance">Torrance <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Troy">Troy <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Tualatin">Tualatin <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Tucson">Tucson <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Tustin">Tustin <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Union">Union <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Union%20City">Union City <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Vancouver">Vancouver <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Vestal">Vestal <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Vestavia%20Hills">Vestavia Hills <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Vienna">Vienna <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Visalia">Visalia <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Waco">Waco <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Wake%20Forest">Wake Forest <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Warren">Warren <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Warrensville%20Heights">Warrensville Heights <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Washington">Washington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Wauwatosa">Wauwatosa <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Wayne">Wayne <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Webster">Webster <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Wesley%20Chapel">Wesley Chapel <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=West%20Covina">West Covina <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Westerville">Westerville <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Westminster">Westminster <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=White%20Plains">White Plains <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Willow%20Grove">Willow Grove <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Wilmington">Wilmington <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Woburn">Woburn <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Worcester">Worcester <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=York">York <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Yukon">Yukon <span>1</span></a>
+        <a class="citychip" href="/daves-hot-chicken/daves-hot-chicken-locations/?city=Yuma">Yuma <span>1</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="panel" id="directory">
     <div class="wrap">
       <div class="sec-head">
