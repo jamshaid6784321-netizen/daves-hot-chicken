@@ -1935,10 +1935,10 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
   a.addEventListener("click", function(){ showTab(a.getAttribute("data-tab-link"), true); });
 });
 
-/* ============ tabs autoplay: categories auto-swipe every 2.5 seconds ============ */
+/* ============ tabs autoplay: categories auto-swipe every 5 seconds ============ */
 (function(){
   if (reduceMotion || !tabBtns.length) return;
-  var DELAY = 2500, timer = null, resumeT = null, inView = false, userHold = false;
+  var DELAY = 5000, timer = null, resumeT = null, inView = false, userHold = false;
   var tabBar = document.querySelector(".tabbar");
   function currentIdx(){
     var idx = 0;
@@ -1960,14 +1960,23 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
       if (inView) schedule(); else stop();
     }, { threshold: 0.15 }).observe(tabBar);
   } else { inView = true; schedule(); }
-  /* any manual interaction restarts the countdown, with a 4s grace period */
-  function poke(){
+  /* A deliberate category choice (tab click, arrow key or category link)
+     holds the rotation for a full 30 seconds; other touches restart the
+     countdown with a short 4s grace period. */
+  function poke(grace){
     stop();
     if (resumeT) clearTimeout(resumeT);
-    resumeT = setTimeout(function(){ resumeT = null; schedule(); }, 4000);
+    resumeT = setTimeout(function(){ resumeT = null; schedule(); }, grace || 4000);
   }
-  tabBtns.forEach(function(b){ b.addEventListener("click", poke); });
-  document.querySelectorAll("[data-tab-link]").forEach(function(a){ a.addEventListener("click", poke); });
+  tabBtns.forEach(function(b){
+    b.addEventListener("click", function(){ poke(30000); });
+    b.addEventListener("keydown", function(e){
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") poke(30000);
+    });
+  });
+  document.querySelectorAll("[data-tab-link]").forEach(function(a){
+    a.addEventListener("click", function(){ poke(30000); });
+  });
   /* Hovering the tab bar itself pauses the rotation. A press anywhere in
      the menu only restarts the countdown: a pointer resting over the panel
      text must not stall the showcase (first live check caught exactly that:
