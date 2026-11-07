@@ -1928,9 +1928,6 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
   function tick(){
     timer = null;
     if (!inView || userHold || document.hidden) { schedule(); return; }
-    var panel = document.querySelector("[data-panel]:not([hidden])");
-    /* visitor has scrolled deep into a panel to read it: do not yank the category away */
-    if (panel && panel.getBoundingClientRect().top < -80) { schedule(); return; }
     var next = tabBtns[(currentIdx() + 1) % tabBtns.length];
     showTab(next.getAttribute("data-tab"), false);
     schedule();
@@ -1949,14 +1946,16 @@ document.querySelectorAll("[data-tab-link]").forEach(function(a){
   }
   tabBtns.forEach(function(b){ b.addEventListener("click", poke); });
   document.querySelectorAll("[data-tab-link]").forEach(function(a){ a.addEventListener("click", poke); });
-  /* hovering or holding the menu area pauses the rotation */
-  var zones = [tabBar].concat(Array.prototype.slice.call(panels));
-  zones.forEach(function(el){
-    if (!el) return;
-    el.addEventListener("pointerenter", function(){ userHold = true; stop(); });
-    el.addEventListener("pointerleave", function(){ userHold = false; schedule(); });
-    el.addEventListener("pointerdown", poke);
-  });
+  /* Hovering the tab bar itself pauses the rotation. A press anywhere in
+     the menu only restarts the countdown: a pointer resting over the panel
+     text must not stall the showcase (first live check caught exactly that:
+     the newly shown panel "entered" the parked pointer and froze it). */
+  if (tabBar) {
+    tabBar.addEventListener("pointerenter", function(){ userHold = true; stop(); });
+    tabBar.addEventListener("pointerleave", function(){ userHold = false; schedule(); });
+    tabBar.addEventListener("pointerdown", poke);
+  }
+  panels.forEach(function(p){ p.addEventListener("pointerdown", poke); });
 })();
 
 /* ============ calculator ============ */
