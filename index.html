@@ -270,10 +270,23 @@ footer{margin-top:64px;background:#140b06;color:#e8d5c0}
 
 /* below-menu sections (heat, love, faq, rewards, history) */
 .bodycopy{color:var(--muted);max-width:46rem;margin:8px 0 0}
-.heatlist{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.heatlist li{font-weight:800;font-size:.92rem;min-height:44px;display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;border:2px solid var(--line);background:var(--card)}
+.heatlist{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.heatlist li{font-weight:800;font-size:.95rem;display:flex;flex-direction:column;align-items:center;gap:9px;padding:14px 8px 13px;border-radius:14px;border:2px solid var(--line);background:var(--card);text-align:center;transition:transform .18s ease,box-shadow .18s ease}
+.heatlist li:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(60,20,0,.14)}
+.heatlist li:nth-child(2){background:#fff3d6;border-color:#f3d894}
+.heatlist li:nth-child(3){background:#ffe3ae;border-color:#eec26a}
+.heatlist li:nth-child(4){background:#ffd08a;border-color:#e8a94e}
+.heatlist li:nth-child(5){background:#ffb066;border-color:#dd8438}
+.heatlist li:nth-child(6){background:#ff8547;border-color:#d96a28}
 .heatlist li.reaper{background:var(--red);border-color:var(--red);color:#fff}
-@media(max-width:480px){.heatlist li{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.heatlist li.reaper{flex-basis:100%}}
+.hlv-meter{display:block;width:100%;max-width:74px;height:7px;border-radius:99px;background:rgba(0,0,0,.13);overflow:hidden}
+.hlv-meter i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--yellow),#ff7a1a,var(--red))}
+.heatlist li.reaper .hlv-meter{background:rgba(255,255,255,.35)}
+.heatlist li.reaper .hlv-meter i{background:#fff}
+.hlv-sub{display:block;font-size:.72rem;font-weight:700;letter-spacing:.02em;opacity:.85;margin-top:-4px}
+@media(max-width:900px){.heatlist{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:480px){.heatlist{grid-template-columns:repeat(2,1fr)}.heatlist li.reaper{grid-column:1/-1}}
+@media (prefers-reduced-motion: reduce){.heatlist li{transition:none}}
 .lovegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
 @media(max-width:700px){.lovegrid{grid-template-columns:1fr;gap:12px;margin-top:16px}.lovecard{padding:15px}}
 .lovecard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
@@ -1639,13 +1652,13 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
         </div>
       </div>
       <ul class="heatlist">
-        <li>No Spice</li>
-        <li>Lite Mild</li>
-        <li>Mild</li>
-        <li>Medium</li>
-        <li>Hot</li>
-        <li>Extra Hot</li>
-        <li class="reaper">Reaper · signed waiver required</li>
+        <li><span>No Spice</span><span class="hlv-meter" aria-hidden="true"><i style="width:0%"></i></span></li>
+        <li><span>Lite Mild</span><span class="hlv-meter" aria-hidden="true"><i style="width:17%"></i></span></li>
+        <li><span>Mild</span><span class="hlv-meter" aria-hidden="true"><i style="width:33%"></i></span></li>
+        <li><span>Medium</span><span class="hlv-meter" aria-hidden="true"><i style="width:50%"></i></span></li>
+        <li><span>Hot</span><span class="hlv-meter" aria-hidden="true"><i style="width:67%"></i></span></li>
+        <li><span>Extra Hot</span><span class="hlv-meter" aria-hidden="true"><i style="width:83%"></i></span></li>
+        <li class="reaper"><span>Reaper</span><span class="hlv-meter" aria-hidden="true"><i style="width:100%"></i></span><span class="hlv-sub">signed waiver required</span></li>
       </ul>
     </div>
   </section>
