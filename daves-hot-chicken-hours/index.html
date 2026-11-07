@@ -211,9 +211,25 @@
           <p>Dave's Hot Chicken hours change from store to store, so here they are one by one: every open store whose Google listing publishes its hours, with the times exactly as that listing shows them. If a store is not in this table, its Google listing does not publish confirmed hours for it.</p>
         </div>
       </div>
-      <style>.staterow td{font-weight:900;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;background:#f7e9d2;color:#7a2b12;padding-top:13px;padding-bottom:9px}</style>
+      <style>.staterow td{font-weight:900;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;background:#f7e9d2;color:#7a2b12;padding-top:13px;padding-bottom:9px}
+.storetable{table-layout:fixed;width:100%}
+.storetable th:nth-child(1),.storetable td:nth-child(1){width:31%}
+.storetable th:nth-child(2),.storetable td:nth-child(2){width:15%}
+.storetable th:nth-child(3),.storetable td:nth-child(3){width:54%}
+.storetable td{vertical-align:top;overflow-wrap:break-word}
+@media(max-width:720px){
+.storetable thead{position:absolute;left:-9999px;top:-9999px}
+.storetable,.storetable tbody{display:block;width:100%}
+.storetable tr{display:block;padding:11px 13px;border-bottom:1px solid var(--line)}
+.storetable td{display:block;width:auto!important;border:0;padding:2px 0}
+.storetable td:nth-child(1){font-weight:800;font-size:1rem;padding-bottom:4px}
+.storetable td:nth-child(2)::before{content:"Opens: ";font-weight:800}
+.storetable td:nth-child(3)::before{content:"Closes: ";font-weight:800}
+.storetable tr.staterow{background:#f7e9d2;padding:9px 13px}
+.storetable .staterow td{padding:0}
+}</style>
       <div class="nwrap">
-        <table class="nutri">
+        <table class="nutri storetable">
           <thead><tr><th>Store</th><th>Opens</th><th>Closes</th></tr></thead>
           <tbody>
             <tr class="staterow"><td colspan="3">Alabama</td></tr>
