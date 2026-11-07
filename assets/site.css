@@ -225,6 +225,12 @@ footer{margin-top:64px;background:#140b06;color:#e8d5c0}
 .footer-about{color:#c9a98d;font-size:.92rem;line-height:1.6;margin:0}
 .footer-loc-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .footer-loc-row span{font-size:.82rem;font-weight:700;color:#ffe9d6;border:1px solid #453022;border-radius:999px;padding:6px 11px;background:#1f120a}
+.footer-loc-row a{font-size:.82rem;font-weight:700;color:#ffe9d6;border:1px solid #453022;border-radius:999px;padding:6px 11px;background:#1f120a;text-decoration:none}
+.footer-loc-row a:hover{border-color:#d92323;color:#fff}
+.footer-socials{display:flex;gap:10px;margin-top:16px}
+.footer-socials a{width:40px;height:40px;border-radius:50%;background:#1f120a;border:1px solid #453022;color:#ffe9d6;display:inline-flex;align-items:center;justify-content:center}
+.footer-socials a:hover{background:#d92323;border-color:#d92323;color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor}
 .footer-bottom{margin-top:26px;border-top:1px solid #332014;padding:18px 0 26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
 .footer-bottom p{margin:0}
 
