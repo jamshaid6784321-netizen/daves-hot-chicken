@@ -202,6 +202,7 @@
 .loc-card p{margin:0 0 5px;font-size:14.5px;line-height:1.45}
 .loc-card .dist{font-weight:700;color:#d92323}
 .loc-card .soon{display:inline-block;background:#ffc72c;color:#1c1c1c;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px}
+.loc-card .closed{display:inline-block;background:#4a4a4a;color:#fff;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px}
 .loc-card a.dir{display:inline-block;margin-top:8px;background:#1c1c1c;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
 a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d92323;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
 .leaflet-popup-content a.call-btn{margin-top:6px;padding:6px 12px;font-size:13px}
@@ -213,6 +214,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
 .dir-list li{margin:0;padding:9px 2px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55}
 .dir-list .dirphone{white-space:nowrap}
 .dir-list .soon{display:inline-block;background:#ffc72c;color:#1c1c1c;border-radius:20px;padding:1px 8px;font-size:11.5px;font-weight:700;margin-left:6px}
+.dir-list .closed{display:inline-block;background:#4a4a4a;color:#fff;border-radius:20px;padding:1px 8px;font-size:11.5px;font-weight:700;margin-left:6px}
 @media (max-width:760px){.dir-list{columns:1}#dhc-map{height:400px}}
 </style>
 
@@ -528,7 +530,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
         <li><b>Burbank, CA – N. Victory Pl.</b> · 1781 N. Victory Place, Burbank, CA, 91502 · <span class="dirphone">(747) 308-3660</span><span class="soon">OPENING SOON</span><br><a class="call-btn" href="tel:+17473083660">Call to Order</a></li>
         <li><b>Cathedral City, CA – Date Palm</b> · 31875 Date Palm, Cathedral City, CA, 92234 · <span class="dirphone">(760) 406-5561</span><span class="soon">OPENING SOON</span><br><a class="call-btn" href="tel:+17604065561">Call to Order</a></li>
         <li><b>Chino Hills, CA – Chino Hills Pkwy E</b> · 4505 Chino Hills Pkwy E, Chino Hills, CA, 91709 · <span class="dirphone">(840) 206-3699</span><span class="soon">OPENING SOON</span><br><a class="call-btn" href="tel:+18402063699">Call to Order</a></li>
-        <li><b>Costa Mesa, CA – Harbor Blvd.</b> · Costa Mesa, CA</li>
+        <li><b>Costa Mesa, CA – Harbor Blvd.</b> · Costa Mesa, CA<span class="closed">PERMANENTLY CLOSED</span></li>
         <li><b>Culver City, CA – Venice Blvd.</b> · 10704 Venice Blvd. Suite B, Culver City, CA, 90232 · <span class="dirphone">(310) 362-0777</span><br><a class="call-btn" href="tel:+13103620777">Call to Order</a></li>
         <li><b>Dublin, CA – Tassajara Rd.</b> · 4550-A Tassajara Rd., Dublin, CA, 94568 · <span class="dirphone">(925) 574-5660</span><span class="soon">OPENING SOON</span><br><a class="call-btn" href="tel:+19255745660">Call to Order</a></li>
         <li><b>El Cajon, CA – Fletcher Parkway</b> · 110 Fletcher Parkway Suite 109, El Cajon, CA, 92020 · <span class="dirphone">(858) 258-5881</span><br><a class="call-btn" href="tel:+18582585881">Call to Order</a></li>
@@ -549,7 +551,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
         <li><b>Los Angeles, CA -Centinela Ave. (Ladera)</b> · 5301 Centinela Ave., Los Angeles, CA, 90045 · <span class="dirphone">(323) 410-4822</span><br><a class="call-btn" href="tel:+13234104822">Call to Order</a></li>
         <li><b>Los Angeles, CA – E. 2nd St. – Little Tokyo</b> · 131 S Central Ave., Los Angeles, CA, 90012 · <span class="dirphone">(323) 507-3077</span><br><a class="call-btn" href="tel:+13235073077">Call to Order</a></li>
         <li><b>Los Angeles, CA – East Hollywood</b> · 970 N Western Ave, Los Angeles, CA, 90029 · <span class="dirphone">(323) 536-9711</span><br><a class="call-btn" href="tel:+13235369711">Call to Order</a></li>
-        <li><b>Los Angeles, CA – Fairfax</b> · Los Angeles, CA</li>
+        <li><b>Los Angeles, CA – Fairfax</b> · Los Angeles, CA<span class="closed">PERMANENTLY CLOSED</span></li>
         <li><b>Los Angeles, CA – Koreatown</b> · 3462 Wilshire Blvd, Los Angeles, CA, 90010 · <span class="dirphone">(213) 201-1083</span><br><a class="call-btn" href="tel:+12132011083">Call to Order</a></li>
         <li><b>Menifee, CA – Town Center Dr.</b> · 30012 Town Center Drive Suite A, Menifee, CA, 92584 · <span class="dirphone">(951) 309-0100</span><br><a class="call-btn" href="tel:+19513090100">Call to Order</a></li>
         <li><b>Mission Viejo, CA – Alicia Pkwy.</b> · 24440 Alicia Pkwy Ste A, Mission Viejo, CA, 92691 · <span class="dirphone">(949) 603-0057</span><span class="soon">OPENING SOON</span><br><a class="call-btn" href="tel:+19496030057">Call to Order</a></li>
@@ -935,6 +937,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
   }).addTo(map);
   var pinStyle = {radius:7, color:'#7a0d0d', weight:1.5, fillColor:'#d92323', fillOpacity:.9};
   var soonStyle = {radius:7, color:'#7a5b00', weight:1.5, fillColor:'#ffc72c', fillOpacity:.95};
+  var closedStyle = {radius:7, color:'#333333', weight:1.5, fillColor:'#6e6e6e', fillOpacity:.9};
   function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   function telHref(p){
     var d = (p || '').replace(/\D/g, '');
@@ -950,6 +953,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
   function infoHtml(s){
     var h = '<b>' + esc(s.n) + '</b>';
     if (s.soon) h += '<br><i>Opening soon</i>';
+    if (s.closed) h += '<br><i>Permanently closed</i>';
     if (s.a) h += '<br>' + esc([s.a, s.c, s.s, s.z].filter(Boolean).join(', '));
     else if (s.c) h += '<br>' + esc([s.c, s.s].filter(Boolean).join(', '));
     if (s.p) h += '<br>' + esc(s.p);
@@ -960,7 +964,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
   }
   stores.forEach(function(s){
     if (s.lat === null || s.lng === null) return;
-    L.circleMarker([s.lat, s.lng], s.soon ? soonStyle : pinStyle)
+    L.circleMarker([s.lat, s.lng], s.closed ? closedStyle : (s.soon ? soonStyle : pinStyle))
       .addTo(map).bindPopup(infoHtml(s));
   });
   function hav(a, b, c, d){
@@ -980,6 +984,7 @@ a.call-btn{display:inline-block;margin-top:8px;margin-right:8px;background:#d923
       var s = w.s;
       var h = '<article class="loc-card"><h3>' + esc(s.n) + '</h3>';
       if (s.soon) h += '<span class="soon">OPENING SOON</span>';
+      if (s.closed) h += '<span class="closed">PERMANENTLY CLOSED</span>';
       if (s.a) h += '<p>' + esc([s.a, s.c, s.s, s.z].filter(Boolean).join(', ')) + '</p>';
       if (s.p) h += '<p>' + esc(s.p) + '</p>';
       if (s.h) h += '<p>' + esc(s.h) + '</p>';
