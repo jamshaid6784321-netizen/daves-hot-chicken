@@ -193,10 +193,50 @@
       <div class="sec-head">
         <div>
           <h2>The <em>Lineup</em>: Dave's #1 to #5</h2>
-          <p>Every one of the Dave's Hot Chicken combos, in one table. Calories and protein are from Dave's official nutrition documentation (revised 16 March 2026); the ranges are the spice bands, from Not Hot at the low end to Reaper at the high end.</p>
+          <p>Every one of the Dave's Hot Chicken combos: tap a card for its full nutrition, and the table underneath puts them side by side. Calories and protein are from the nutrition documentation (revised 16 March 2026); the ranges are the spice bands, from Not Hot at the low end to Reaper at the high end.</p>
         </div>
       </div>
-      <div class="nwrap">
+      <style>
+.menucards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
+.menucards .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0;cursor:pointer;position:relative}
+.menucards .pcard::after{content:"+";position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:#d92323;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3);z-index:2}
+.menucards .pcard figure{margin:0;position:relative;height:0;padding-top:75%;overflow:hidden;background:var(--card-2)}
+.menucards .pcard figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.menucards .pcard .body{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.menucards .pcard h3{font-size:1.02rem;text-transform:uppercase;overflow-wrap:break-word}
+.menucards .pcard .meta{margin-top:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.menucards .chip{display:inline-flex;align-items:center;background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.79rem;font-weight:700}
+.dhc-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
+.dhc-modal[hidden]{display:none}
+.dhc-modal-backdrop{position:absolute;inset:0;background:rgba(12,10,10,.74)}
+.dhc-modal-card{position:relative;background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.45);animation:dhcPop .25s ease both}
+@keyframes dhcPop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.dhc-modal-card{animation:none}}
+.dhc-modal-card figure{margin:0}
+.dhc-modal-card figure img{width:100%;height:auto;display:block}
+.dhc-modal-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(0,0,0,.68);color:#fff;font-size:20px;cursor:pointer;line-height:1;z-index:3}
+.dhc-modal-body{padding:18px 20px 22px}
+.dhc-modal-body h3{margin:0 0 6px}
+.dhc-modal-desc{margin:0 0 12px;color:#555}
+.dhc-modal .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dhc-modal .price{font-family:"Anton",sans-serif;font-size:1.18rem;color:var(--red)}
+.dhc-modal .price:empty{display:none}
+.dhc-modal .chip{display:inline-flex;align-items:center;background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.79rem;font-weight:700}
+.dhc-modal-nutri{width:100%;border-collapse:collapse;margin:16px 0 6px}
+.dhc-modal-nutri td{padding:7px 4px;border-bottom:1px solid #eee}
+.dhc-modal-nutri td:first-child{color:#666}
+.dhc-modal-nutri td:last-child{text-align:right;font-weight:600}
+.dhc-modal-cta{display:block;text-align:center;background:#d92323;color:#fff;font-weight:700;padding:13px 16px;border-radius:10px;text-decoration:none;margin-top:14px}
+.dhc-modal-note{font-size:12.5px;color:#888;margin:10px 0 0;text-align:center}
+      </style>
+      <div class="menucards">
+        <article class="pcard"><figure><img decoding="async" src="../images/daves-1-combo-two-hot-chicken-tenders-with-fries-pickles.webp" srcset="../images/daves-1-combo-two-hot-chicken-tenders-with-fries-pickles-480.webp 480w, ../images/daves-1-combo-two-hot-chicken-tenders-with-fries-pickles.webp 800w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="600" alt="Dave's #1 combo: two hot chicken tenders with fries, pickles and a cup of Dave's Sauce" loading="lazy" /></figure><div class="body"><h3>#1 Combo: 2 Tenders</h3><div class="meta"><span class="chip">1,230–1,350 cal</span></div></div></article>
+        <article class="pcard"><figure><img decoding="async" src="../images/daves-2-combo-two-nashville-hot-chicken-sliders-with-cri.webp" srcset="../images/daves-2-combo-two-nashville-hot-chicken-sliders-with-cri-480.webp 480w, ../images/daves-2-combo-two-nashville-hot-chicken-sliders-with-cri.webp 800w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="600" alt="Dave's #2 combo: two Nashville hot chicken sliders with crinkle fries on a tray" loading="lazy" /></figure><div class="body"><h3>#2 Combo: 2 Sliders</h3><div class="meta"><span class="chip">1,500–1,620 cal</span></div></div></article>
+        <article class="pcard"><figure><img decoding="async" src="../images/daves-3-combo-one-hot-chicken-slider-and-one-tender-with.webp" srcset="../images/daves-3-combo-one-hot-chicken-slider-and-one-tender-with-480.webp 480w, ../images/daves-3-combo-one-hot-chicken-slider-and-one-tender-with.webp 800w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="600" alt="Dave's #3 combo: one hot chicken slider and one tender with fries on a tray" loading="lazy" /></figure><div class="body"><h3>#3 Combo: 1 Slider + 1 Tender</h3><div class="meta"><span class="chip">1,370–1,490 cal</span></div></div></article>
+        <article class="pcard"><figure><img decoding="async" src="../images/daves-4-combo-one-hot-chicken-slider-with-fries-pickles.webp" srcset="../images/daves-4-combo-one-hot-chicken-slider-with-fries-pickles-480.webp 480w, ../images/daves-4-combo-one-hot-chicken-slider-with-fries-pickles.webp 800w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="600" alt="Dave's #4 combo: one hot chicken slider with fries, pickles and Dave's Sauce" loading="lazy" /></figure><div class="body"><h3>#4 Combo: 1 Slider</h3><div class="meta"><span class="chip">1,060–1,110 cal</span></div></div></article>
+        <article class="pcard"><figure><img decoding="async" src="../images/single-crispy-hot-chicken-tender-served-on-sliced-bread.webp" srcset="../images/single-crispy-hot-chicken-tender-served-on-sliced-bread-480.webp 480w, ../images/single-crispy-hot-chicken-tender-served-on-sliced-bread.webp 800w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="600" alt="Dave's #5 combo: one hot chicken tender with fries, pickles and Dave's Sauce" loading="lazy" /></figure><div class="body"><h3>#5 Combo: 1 Tender</h3><div class="meta"><span class="chip">930–990 cal</span></div></div></article>
+      </div>
+      <div class="nwrap" style="margin-top:18px">
         <table class="nutri">
           <thead><tr><th>Combo</th><th>What's included</th><th>Calories</th><th>Protein</th></tr></thead>
           <tbody>
@@ -210,6 +250,112 @@
       </div>
       <p style="margin-top:16px">How a combo is built matters as much as the count. Tenders arrive with sliced bread, pickles and Dave's Sauce; sliders come on a potato bun with kale slaw, pickles and Dave's Sauce; and the fries are crinkle-cut, seasoned, and in the tray by default. In all Dave's Hot Chicken combos, heat is set per piece, not per order, so the two halves of a Dave's #3 can run at different levels, and all seven <a href="/daves-hot-chicken/daves-hot-chicken-spice-levels/">spice levels</a> are available in every combo at no extra charge. The Reaper level is the one exception to casual ordering: it needs a signed waiver first.</p>
     </div>
+
+      <div class="dhc-modal" id="dhcModal" hidden role="dialog" aria-modal="true" aria-labelledby="dhcModalName">
+        <div class="dhc-modal-backdrop" data-close></div>
+        <div class="dhc-modal-card">
+          <button class="dhc-modal-x" type="button" data-close aria-label="Close details">&times;</button>
+          <figure><img id="dhcModalImg" src="" alt=""></figure>
+          <div class="dhc-modal-body">
+            <h3 id="dhcModalName"></h3>
+            <p class="dhc-modal-desc" id="dhcModalDesc"></p>
+            <div class="meta"><span class="price" id="dhcModalPrice"></span><span class="chip" id="dhcModalCal"></span></div>
+            <table class="dhc-modal-nutri" id="dhcModalNutri"></table>
+            <a class="dhc-modal-cta" href="/daves-hot-chicken/daves-hot-chicken-locations/">Find a Store to Order</a>
+            <p class="dhc-modal-note">Calories are the published chart ranges across the spice bands. Each store sets its own prices.</p>
+          </div>
+        </div>
+      </div>
+      <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Menu", "hasMenuSection": [{"@type": "MenuSection", "name": "Combos", "hasMenuItem": [
+{"@type": "MenuItem", "name": "#1 Combo: 2 Tenders", "nutrition": {"@type": "NutritionInformation", "calories": "1,230-1,350 calories", "proteinContent": "56 g", "fatContent": "58-71 g", "carbohydrateContent": "115-119 g", "sodiumContent": "3,080-3,630 mg"}},
+{"@type": "MenuItem", "name": "#2 Combo: 2 Sliders", "nutrition": {"@type": "NutritionInformation", "calories": "1,500-1,620 calories", "proteinContent": "68 g", "fatContent": "75-87 g", "carbohydrateContent": "143-145 g", "sodiumContent": "3,340 mg"}},
+{"@type": "MenuItem", "name": "#3 Combo: 1 Slider + 1 Tender", "nutrition": {"@type": "NutritionInformation", "calories": "1,370-1,490 calories", "proteinContent": "62 g", "fatContent": "67-79 g", "carbohydrateContent": "128-130 g", "sodiumContent": "3,400 mg"}},
+{"@type": "MenuItem", "name": "#4 Combo: 1 Slider", "nutrition": {"@type": "NutritionInformation", "calories": "1,060-1,110 calories", "proteinContent": "37 g", "fatContent": "56-63 g", "carbohydrateContent": "103-104 g", "sodiumContent": "2,350 mg"}},
+{"@type": "MenuItem", "name": "#5 Combo: 1 Tender", "nutrition": {"@type": "NutritionInformation", "calories": "930-990 calories", "proteinContent": "31 g", "fatContent": "48-54 g", "carbohydrateContent": "92-93 g", "sodiumContent": "2,410-2,680 mg"}}
+]}]}
+      </script>
+      <script>
+(function(){
+  function init(){
+  var modal = document.getElementById("dhcModal");
+  if (!modal) return;
+  var byName = {};
+  function norm(x){ return (x || "").toLowerCase().replace(/dave's|daves/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+  try {
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(sc){
+      var data = JSON.parse(sc.textContent);
+      var graph = data["@graph"] || [data];
+      graph.forEach(function(node){
+        if (node["@type"] !== "Menu") return;
+        (node.hasMenuSection || []).forEach(function(sec){
+          (sec.hasMenuItem || []).forEach(function(it){ byName[norm(it.name)] = it; });
+        });
+      });
+    });
+  } catch (e) {}
+  var img = document.getElementById("dhcModalImg"),
+      nameEl = document.getElementById("dhcModalName"),
+      descEl = document.getElementById("dhcModalDesc"),
+      priceEl = document.getElementById("dhcModalPrice"),
+      calEl = document.getElementById("dhcModalCal"),
+      nutriEl = document.getElementById("dhcModalNutri"),
+      lastFocus = null;
+  function rowsFor(it){
+    if (!it || !it.nutrition) return "";
+    var n = it.nutrition, rows = "";
+    function row(label, val){ if (val) rows += "<tr><td>" + label + "</td><td>" + val + "</td></tr>"; }
+    row("Calories", n.calories);
+    row("Protein", n.proteinContent);
+    row("Fat", n.fatContent);
+    row("Carbs", n.carbohydrateContent);
+    row("Sodium", n.sodiumContent);
+    row("Fiber", n.fiberContent);
+    row("Sugar", n.sugarContent);
+    return rows;
+  }
+  function open(card){
+    var h3 = card.querySelector("h3");
+    var cimg = card.querySelector("img");
+    var price = card.querySelector(".price");
+    var chip = card.querySelector(".chip");
+    nameEl.textContent = h3 ? h3.textContent : "Menu item";
+    if (cimg) { img.src = cimg.currentSrc || cimg.src; img.alt = cimg.alt || ""; descEl.textContent = cimg.alt || ""; }
+    descEl.style.display = descEl.textContent ? "" : "none";
+    priceEl.textContent = price ? price.textContent : "";
+    calEl.textContent = chip ? chip.textContent : "";
+    var rows = rowsFor(byName[norm(nameEl.textContent)]);
+    nutriEl.innerHTML = rows;
+    nutriEl.style.display = rows ? "" : "none";
+    lastFocus = document.activeElement;
+    window.__dhcHoldAutoplay = true;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    var x = modal.querySelector(".dhc-modal-x");
+    if (x) x.focus();
+  }
+  function close(){
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    window.__dhcHoldAutoplay = false;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll(".menucards .pcard").forEach(function(card){
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.addEventListener("click", function(){ open(card); });
+    card.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(card); }
+    });
+  });
+  modal.addEventListener("click", function(e){ if (e.target.closest("[data-close]")) close(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+      </script>
   </section>
 
   <section class="panel" id="picker">
@@ -336,7 +482,7 @@
       </div>
       <div class="grid">
         <a class="pick" href="/daves-hot-chicken/daves-hot-chicken-catering/"><b>Catering</b><span>Hot Boxes and bundles for crowds, explained →</span></a>
-        <a class="pick" href="/daves-hot-chicken/daves-hot-chicken-nutrition/"><b>Nutrition</b><span>The full facts chart from the official 2026 chart →</span></a>
+        <a class="pick" href="/daves-hot-chicken/daves-hot-chicken-nutrition/"><b>Nutrition</b><span>The full facts chart, item by item →</span></a>
         <a class="pick" href="/daves-hot-chicken/daves-hot-chicken-spice-levels/"><b>Spice Levels</b><span>All 7 heat levels, from Not Hot to Reaper →</span></a>
         <a class="pick" href="/daves-hot-chicken/daves-hot-chicken-rewards/"><b>Rewards</b><span>Frequent Fryer points and the free drink offer →</span></a>
       </div>
