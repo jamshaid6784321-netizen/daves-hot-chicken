@@ -208,8 +208,16 @@
           <p>The Dave's Hot Chicken allergen menu as a chart, grouped the way the menu is grouped. "Contains" means the allergen is an ingredient of the item on the published chart; cross-contact from the shared fryers applies to everything on top of this, fried items most of all.</p>
         </div>
       </div>
+      <style>
+      .nutri.allergenchart{min-width:0;table-layout:fixed}
+      .nutri.allergenchart th,.nutri.allergenchart td{white-space:normal;overflow-wrap:break-word;vertical-align:top}
+      .nutri.allergenchart th:nth-child(1),.nutri.allergenchart td:nth-child(1){width:27%;min-width:0}
+      .nutri.allergenchart th:nth-child(2),.nutri.allergenchart td:nth-child(2){width:23%;min-width:0}
+      .nutri.allergenchart th:nth-child(3),.nutri.allergenchart td:nth-child(3){width:50%;min-width:0}
+      @media(max-width:720px){.nutri.allergenchart th,.nutri.allergenchart td{padding:8px;font-size:.86rem}}
+      </style>
       <div class="nwrap">
-        <table class="nutri">
+        <table class="nutri allergenchart">
           <thead><tr><th>Item</th><th>Contains</th><th>Notes</th></tr></thead>
           <tbody>
             <tr><td>Tenders, Dave's Bites, Hot Box tenders &amp; bites</td><td>Wheat, Egg, Soy</td><td>From the breading. One Dave's guide also reports a buttermilk marinade, which would add Milk; milk-sensitive readers should ask in store.</td></tr>
