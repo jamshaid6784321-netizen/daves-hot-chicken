@@ -226,6 +226,139 @@
     </div>
   </section>
 
+  <section class="panel" id="calculator">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Build Your <em>Meal</em></h2>
+          <p>Pick the items on your tray and see the whole order's nutrition at once, calculated from the chart figures. Totals run as a range, like the chart: the low end is the Not Hot to Lite Mild spice band, the high end is Mild to Reaper.</p>
+        </div>
+      </div>
+      <style>.nb-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}.nb-controls select{flex:1 1 280px;padding:12px 14px;border-radius:10px;border:2px solid #2b2b2b;font-size:16px;background:#fff;color:#1c1c1c}.nb-list{list-style:none;margin:16px 0 0;padding:0}.nb-list li{display:flex;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px solid var(--line);font-size:15px}.nb-list li b{flex:1}.nb-qty{display:inline-flex;align-items:center;gap:7px;font-weight:700}.nb-qty button,.nb-x{border:2px solid var(--line);background:var(--card);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer;font-weight:800}.nb-cal{color:var(--muted);white-space:nowrap}.nb-totals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}@media(max-width:640px){.nb-totals{grid-template-columns:repeat(2,1fr)}}.nb-stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.nb-stat b{display:block;font-size:1.3rem}.nb-stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}</style>
+      <div class="nb-controls">
+        <select id="nb-item" aria-label="Choose a menu item">
+          <optgroup label="Chicken &amp; Cauliflower">
+            <option value="0">Single Tender</option>
+            <option value="1">Single Slider</option>
+            <option value="2">10 pc Dave&#x27;s Bites</option>
+            <option value="3">Cauli Slider (Not Chicken)</option>
+            <option value="4">Cauli Bites (Not Chicken)</option>
+            <option value="5">Hot Mozz, 1 pc</option>
+            <option value="6">Hot Mozz Slider</option>
+            <option value="7">Hot Mozz, 3 pc</option>
+            <option value="8">Hot Mozz, 5 pc</option>
+          </optgroup>
+          <optgroup label="Combos (with fries)">
+            <option value="9">Dave&#x27;s #1 - 2 Tenders</option>
+            <option value="10">Dave&#x27;s #2 - 2 Sliders</option>
+            <option value="11">Dave&#x27;s #3 - Tender + Slider</option>
+            <option value="12">Dave&#x27;s #4 - 1 Slider</option>
+            <option value="13">Dave&#x27;s #5 - 1 Tender</option>
+            <option value="14">10 pc Bites with Fries</option>
+            <option value="15">Not Chicken #1</option>
+            <option value="16">Not Chicken #2</option>
+            <option value="17">Not Chicken #3</option>
+            <option value="18">Not Chicken #4</option>
+            <option value="19">Not Chicken #5</option>
+          </optgroup>
+          <optgroup label="Sides">
+            <option value="20">Fries</option>
+            <option value="21">Cheese Fries</option>
+            <option value="22">Mac &amp; Cheese</option>
+            <option value="23">Kale Slaw</option>
+            <option value="24">Top-Loaded Fries, Small</option>
+            <option value="25">Top-Loaded Fries, Regular</option>
+            <option value="26">Top-Loaded Fries, Large</option>
+            <option value="27">Top-Loaded Buffalo Mac, Small</option>
+            <option value="28">Top-Loaded Buffalo Mac, Regular</option>
+            <option value="29">Top-Loaded Buffalo Mac, Large</option>
+          </optgroup>
+          <optgroup label="Sauces &amp; Dips">
+            <option value="30">Dave&#x27;s Sauce, packet (0.8 oz)</option>
+            <option value="31">Dave&#x27;s Sauce, side (1.5 oz)</option>
+            <option value="32">Dave&#x27;s Sauce, dipper cup (1.5 oz)</option>
+            <option value="33">Dave&#x27;s Sauce, large (4 oz)</option>
+            <option value="34">Ranch, dipper cup (1.5 oz)</option>
+            <option value="35">Reaper Ranch, dipper cup (1.5 oz)</option>
+            <option value="36">Ranch, large side (4 oz)</option>
+            <option value="37">Spicy Buffalo, side</option>
+            <option value="38">Spicy BBQ, side</option>
+            <option value="39">Hot Honey, side</option>
+            <option value="40">Mike&#x27;s Hot Honey, dipper</option>
+            <option value="41">Cheese Sauce</option>
+            <option value="42">Cheese Slice</option>
+          </optgroup>
+        </select>
+        <button class="btn" type="button" id="nb-add">Add to Bucket</button>
+        <button class="btn yellow" type="button" id="nb-clear">Clear</button>
+      </div>
+      <ul class="nb-list" id="nb-list"></ul>
+      <p id="nb-empty" style="margin-top:14px;color:var(--muted)">Your bucket is empty. Add an item above and its nutrition lands here.</p>
+      <div class="nb-totals" id="nb-totals">
+        <div class="nb-stat"><b id="nb-t-cal">–</b><span>Calories</span></div>
+        <div class="nb-stat"><b id="nb-t-fat">–</b><span>Fat (g)</span></div>
+        <div class="nb-stat"><b id="nb-t-sod">–</b><span>Sodium (mg)</span></div>
+        <div class="nb-stat"><b id="nb-t-carb">–</b><span>Carbs (g)</span></div>
+        <div class="nb-stat"><b id="nb-t-fib">–</b><span>Fiber (g)</span></div>
+        <div class="nb-stat"><b id="nb-t-pro">–</b><span>Protein (g)</span></div>
+      </div>
+      <p style="margin-top:14px">Combo sodium with a star on the chart is the Not Hot figure. A † after a total means an item in the bucket lists no value for that nutrient, so the total skips it. Shakes are not in the bucket, because they are not on the 2026 chart.</p>
+    </div>
+    <script>
+    (function(){
+      var ITEMS = [{"n": "Single Tender", "v": [490, 550, 29, 35, 1210, 1480, 30, 31, 0, 0, 25, 25]}, {"n": "Single Slider", "v": [620, 680, 37, 43, 1150, 1420, 41, 42, 0, 0, 31, 31]}, {"n": "10 pc Dave's Bites", "v": [650, 750, 35, 45, 1570, 2000, 39, 41, 0, 0, 41, 41]}, {"n": "Cauli Slider (Not Chicken)", "v": [490, 520, 33, 37, 680, 960, 38, 40, 0, 0, 8, 8]}, {"n": "Cauli Bites (Not Chicken)", "v": [490, 590, 27, 37, 310, 760, 53, 55, 0, 0, 8, 8]}, {"n": "Hot Mozz, 1 pc", "v": [420, 430, null, null, null, null, null, null, null, null, 5, 5]}, {"n": "Hot Mozz Slider", "v": [650, 650, 49, 49, 1120, 1190, 40, 41, 2, 2, 11, 11]}, {"n": "Hot Mozz, 3 pc", "v": [1410, 1430, 123, 124, 2390, 2600, 52, 55, 2, 3, 17, 17]}, {"n": "Hot Mozz, 5 pc", "v": [2330, 2350, 201, 202, 3700, 4060, 88, 93, 4, 5, 29, 29]}, {"n": "Dave's #1 - 2 Tenders", "v": [1230, 1350, 58, 71, 3080, 3630, 115, 119, null, null, 56, 56]}, {"n": "Dave's #2 - 2 Sliders", "v": [1500, 1620, 75, 87, 3340, 3340, 143, 145, null, null, 68, 68]}, {"n": "Dave's #3 - Tender + Slider", "v": [1370, 1490, 67, 79, 3400, 3400, 128, 130, null, null, 62, 62]}, {"n": "Dave's #4 - 1 Slider", "v": [1060, 1110, 56, 63, 2350, 2350, 103, 104, null, null, 37, 37]}, {"n": "Dave's #5 - 1 Tender", "v": [930, 990, 48, 54, 2410, 2680, 92, 93, null, null, 31, 31]}, {"n": "10 pc Bites with Fries", "v": [1090, 1190, 55, 65, 2770, 2770, 98, 100, null, null, 47, 48]}, {"n": "Not Chicken #1", "v": [970, 1040, 51, 58, null, null, 114, 117, null, null, 10, 10]}, {"n": "Not Chicken #2", "v": [1230, 1310, 68, 75, null, null, 138, 140, null, null, 22, 23]}, {"n": "Not Chicken #3", "v": [1100, 1180, 60, 67, null, null, 127, 129, null, null, 16, 16]}, {"n": "Not Chicken #4", "v": [920, 960, 53, 56, null, null, 101, 102, null, null, 14, 14]}, {"n": "Not Chicken #5", "v": [790, 830, 45, 48, null, null, 90, 91, null, null, 8, 8]}, {"n": "Fries", "v": [440, 440, 20, 20, 1200, 1200, 58, 58, 3, 3, 6, 6]}, {"n": "Cheese Fries", "v": [450, 450, 20, 20, 1340, 1340, 60, 60, 3, 3, 7, 7]}, {"n": "Mac & Cheese", "v": [290, 290, 16, 16, 1090, 1090, 25, 25, 1, 1, 14, 14]}, {"n": "Kale Slaw", "v": [270, 270, 26, 26, 170, 170, 8, 8, 3, 3, 2, 2]}, {"n": "Top-Loaded Fries, Small", "v": [700, 700, null, null, null, null, null, null, null, null, null, null]}, {"n": "Top-Loaded Fries, Regular", "v": [1390, 1390, null, null, null, null, null, null, 7, 7, 36, 36]}, {"n": "Top-Loaded Fries, Large", "v": [1630, 1630, null, null, null, null, null, null, 7, 7, null, null]}, {"n": "Top-Loaded Buffalo Mac, Small", "v": [900, 900, null, null, null, null, null, null, null, null, null, null]}, {"n": "Top-Loaded Buffalo Mac, Regular", "v": [1720, 1720, null, null, null, null, null, null, null, null, null, null]}, {"n": "Top-Loaded Buffalo Mac, Large", "v": [2960, 2960, null, null, null, null, null, null, 9, 9, null, null]}, {"n": "Dave's Sauce, packet (0.8 oz)", "v": [150, 150, null, null, null, null, null, null, null, null, null, null]}, {"n": "Dave's Sauce, side (1.5 oz)", "v": [270, 270, null, null, null, null, null, null, null, null, null, null]}, {"n": "Dave's Sauce, dipper cup (1.5 oz)", "v": [290, 290, null, null, null, null, null, null, null, null, null, null]}, {"n": "Dave's Sauce, large (4 oz)", "v": [760, 760, null, null, null, null, null, null, null, null, null, null]}, {"n": "Ranch, dipper cup (1.5 oz)", "v": [200, 200, null, null, null, null, null, null, null, null, null, null]}, {"n": "Reaper Ranch, dipper cup (1.5 oz)", "v": [210, 210, null, null, null, null, null, null, null, null, null, null]}, {"n": "Ranch, large side (4 oz)", "v": [530, 530, null, null, null, null, null, null, null, null, null, null]}, {"n": "Spicy Buffalo, side", "v": [25, 25, null, null, null, null, null, null, null, null, null, null]}, {"n": "Spicy BBQ, side", "v": [70, 70, null, null, null, null, null, null, null, null, null, null]}, {"n": "Hot Honey, side", "v": [140, 140, null, null, null, null, null, null, null, null, null, null]}, {"n": "Mike's Hot Honey, dipper", "v": [150, 150, null, null, null, null, null, null, null, null, null, null]}, {"n": "Cheese Sauce", "v": [25, 25, null, null, null, null, null, null, null, null, null, null]}, {"n": "Cheese Slice", "v": [70, 70, null, null, null, null, null, null, null, null, null, null]}];
+      var bucket = {};
+      var sel = document.getElementById('nb-item');
+      var list = document.getElementById('nb-list');
+      var empty = document.getElementById('nb-empty');
+      var IDS = ['nb-t-cal','nb-t-fat','nb-t-sod','nb-t-carb','nb-t-fib','nb-t-pro'];
+      function num(x){ return x.toLocaleString('en-US'); }
+      function fr(lo, hi){ return lo === hi ? num(lo) : num(lo) + '–' + num(hi); }
+      function esc(t){ var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+      function render(){
+        list.innerHTML = '';
+        var T = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], P = [false,false,false,false,false,false], any = false;
+        Object.keys(bucket).forEach(function(k){
+          var it = ITEMS[+k], q = bucket[k];
+          if (!q || q < 1) return;
+          any = true;
+          var li = document.createElement('li');
+          li.innerHTML = '<b>' + esc(it.n) + '</b>' +
+            '<span class="nb-qty"><button type="button" data-a="-" data-k="' + k + '" aria-label="One less">−</button>×' + q + '<button type="button" data-a="+" data-k="' + k + '" aria-label="One more">+</button></span>' +
+            '<span class="nb-cal">' + fr(it.v[0]*q, it.v[1]*q) + ' cal</span>' +
+            '<button type="button" class="nb-x" data-a="x" data-k="' + k + '" aria-label="Remove item">×</button>';
+          list.appendChild(li);
+          for (var j = 0; j < 6; j++){
+            var lo = it.v[j*2], hi = it.v[j*2+1];
+            if (lo === null || hi === null){ P[j] = true; }
+            else { T[j][0] += lo*q; T[j][1] += hi*q; }
+          }
+        });
+        empty.style.display = any ? 'none' : '';
+        IDS.forEach(function(id, j){
+          document.getElementById(id).textContent = any ? fr(T[j][0], T[j][1]) + (P[j] ? ' †' : '') : '–';
+        });
+      }
+      document.getElementById('nb-add').addEventListener('click', function(){
+        var k = sel.value;
+        bucket[k] = (bucket[k] || 0) + 1;
+        render();
+      });
+      document.getElementById('nb-clear').addEventListener('click', function(){ bucket = {}; render(); });
+      list.addEventListener('click', function(e){
+        var b = e.target.closest('button');
+        if (!b) return;
+        var k = b.getAttribute('data-k'), a = b.getAttribute('data-a');
+        if (a === '+') bucket[k]++;
+        else if (a === '-') { bucket[k]--; if (bucket[k] < 1) delete bucket[k]; }
+        else if (a === 'x') delete bucket[k];
+        render();
+      });
+      render();
+    })();
+    </script>
+  </section>
+
   <section class="panel" id="combos">
     <div class="wrap">
       <div class="sec-head">
