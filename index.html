@@ -362,7 +362,7 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
 .dhc-modal-card figure img{width:100%;height:auto;display:block}
 .dhc-modal-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(0,0,0,.68);color:#fff;font-size:20px;cursor:pointer;line-height:1;z-index:3}
 .dhc-modal-body{padding:18px 20px 22px}
-.dhc-modal-body h3{margin:0 0 6px}
+.dhc-modal-body .dhc-modal-name{margin:0 0 6px;font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.1;font-size:1.17em;overflow-wrap:break-word}
 .dhc-modal-desc{margin:0 0 12px;color:#555}
 .dhc-modal-nutri{width:100%;border-collapse:collapse;margin:16px 0 6px}
 .dhc-modal-nutri td{padding:7px 4px;border-bottom:1px solid #eee}
@@ -2175,7 +2175,7 @@ recalc();
     <button class="dhc-modal-x" type="button" data-close aria-label="Close details">&times;</button>
     <figure><img id="dhcModalImg" src="" alt=""></figure>
     <div class="dhc-modal-body">
-      <h3 id="dhcModalName"></h3>
+      <div class="dhc-modal-name" id="dhcModalName"></div>
       <p class="dhc-modal-desc" id="dhcModalDesc"></p>
       <div class="meta"><span class="price" id="dhcModalPrice"></span><span class="chip" id="dhcModalCal"></span></div>
       <table class="dhc-modal-nutri" id="dhcModalNutri"></table>
