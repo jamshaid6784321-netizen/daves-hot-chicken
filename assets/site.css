@@ -294,6 +294,15 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
 .pick b{display:block;font-size:1.02rem;margin-bottom:4px}
 .pick span{color:var(--muted);font-size:.9rem}
 .pick:hover{border-color:var(--red)}
+.pick.has-img{padding:0;overflow:hidden}
+.pick.has-img img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.pick.has-img .pick-text{display:block;padding:16px 18px}
+.pick-carousel{overflow:hidden;margin-top:20px}
+.pick-track{display:flex;gap:18px;transition:transform .6s ease;will-change:transform}
+.pick-track .pick{flex:0 0 calc((100% - 54px)/4);min-width:0}
+@media(max-width:980px){.pick-track .pick{flex-basis:calc((100% - 36px)/3)}}
+@media(max-width:700px){.pick-carousel{margin-top:16px}.pick-track{gap:12px}.pick-track .pick{flex-basis:calc((100% - 12px)/2)}}
+@media(max-width:480px){.pick-track{gap:14px}.pick-track .pick{flex-basis:100%}}
 
 .faqitem h3.q{font-size:1rem;text-transform:none;margin:0}
 
