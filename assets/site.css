@@ -295,7 +295,7 @@ table.nutri{width:100%;border-collapse:collapse;background:var(--card);min-width
 .pick span{color:var(--muted);font-size:.9rem}
 .pick:hover{border-color:var(--red)}
 .pick.has-img{padding:0;overflow:hidden}
-.pick.has-img img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.pick.has-img img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .pick.has-img .pick-text{display:block;padding:16px 18px}
 .pick-carousel{overflow:hidden;margin-top:20px}
 .pick-track{display:flex;gap:18px;transition:transform .6s ease;will-change:transform}
