@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://davehotchickenmenu.us/sitemap.xml
+Sitemap: https://davehotchicken.us/sitemap.xml
